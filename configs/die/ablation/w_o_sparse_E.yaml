@@ -1,0 +1,55 @@
+experiment_name: ablation_w_o_sparse_E
+benchmark: office_home
+data_root: ./data
+output_dir: ./outputs/office_home_ablation
+transfers:
+- [Art, Clipart]
+seeds: [0, 1, 2]
+num_classes: 65
+feat_dim: 512
+backend: transformers
+clip_model: openai/clip-vit-base-patch16
+n_ctx: 16
+ctx_init: a photo of a
+image_size: 224
+text_logit_scale: 100.0
+train_prompt: false
+semantic_rank: 64
+residual_rank: 16
+init_perturb: 0.001
+rank_eps: 0.001
+j_alt: 5
+lr_block: 0.1
+beta_a: 0.001
+xi: 0.0
+beta_b: 0.001
+lambda_T: 1.0
+lambda_perp: 0.1
+lambda_dec: 1.0
+M: 16
+rho: 0.5
+delta: 0.5
+kappa_r: 4.0
+delta_energy: 2.0
+eta: 0.1
+n_candidates: 10
+donor_capacity: 4096
+gamma: 1.0
+b_max: 2.0
+n_min: 10
+alpha_smooth: 1.0
+ema_stats: 0.9
+beta: 0.3
+lambda_C: 1.0
+lambda_F: 1.0
+strong_aug: image
+lr: 0.001
+weight_decay: 0.0
+batch_size: 64
+iterations_per_epoch: 1000
+warmup_epochs: 3
+adapt_epochs: 17
+rounds: 5
+log_every: 100
+save_every: 1000000
+device: gpu
