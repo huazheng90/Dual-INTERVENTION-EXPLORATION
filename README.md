@@ -33,7 +33,6 @@ DIE/
 │   ├── diagnostics.py           # admission-accuracy, round curves, label-shift
 │   ├── clip_backend.py          # frozen CLIP (transformers) + mock backend
 │   └── utils.py                 # seeds, logging
-├── tests/test_smoke.py          # CPU smoke test (mock backend, no downloads)
 ├── tools/
 │   ├── prepare_data.py          # layout / validation / DomainNet lists
 │   ├── run_all.sh               # all experiments
@@ -53,16 +52,10 @@ pip install -r requirements.txt
 python3 tools/prepare_data.py --data-root ./data        # validates layout
 python3 tools/prepare_data.py --data-root ./data --domainnet-lists
 
-# 3. CPU sanity check (mock backend; no weights, no images)
-python3 tests/test_smoke.py
-
-# 4. Feature cache (extracts frozen CLIP features once; ~30-60 min on GPU)
+# 3. Feature cache (extracts frozen CLIP features once; ~30-60 min on GPU)
 python3 main.py extract --config configs/die/office_home.yaml
 
-# 5. A single transfer, 3 seeds
-python3 main.py run --config configs/die/office_home.yaml --src Art --tgt Clipart
-
-# 6. Full benchmark
+# 4. Full benchmark
 python3 main.py benchmark --config configs/die/office_home.yaml
 # or everything:
 bash tools/run_all.sh
