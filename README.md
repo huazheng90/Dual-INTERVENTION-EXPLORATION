@@ -6,8 +6,6 @@
 DIE is a transductive vision-language domain adaptation (VLDA) method built on a frozen CLIP. 
 Instead of trusting only high-confidence pseudo-labels, DIE runs a class-conditioned residual audit that scores every target sample against every candidate class, then applies an admission-disparity logit intervention that boosts under-represented classes. 
 The two interventions define a risk-stratified training set — a conservative core (hard pseudo-labels, certificate-weighted) and an exploratory frontier (audit rejected but consistently re-classified, KL soft targets with a per-class quota).
-This repository：YAML-driven experiments, a `src/` package with one module per mechanism, mock-backend smoke tests that run on CPU without downloading any weights, and per-transfer/per-seed JSON archives.
-
 
 ## Repository layout
 
